@@ -1,0 +1,368 @@
+/**
+ * ===================================================================================
+ * ARQUIVO DE ESTILO (CSS) - O MANUAL DE IDENTIDADE VISUAL DO POKÉDEXBOT
+ * -----------------------------------------------------------------------------------
+ * Olá! Este é o arquivo que define todo o design e a aparência do seu aplicativo de chat.
+ * Pense nele como o "arquiteto e decorador" do projeto.
+ *
+ * O que este código faz?
+ * - Define a paleta de cores oficial e a fonte usada em todo o app.
+ * - Cria um tema visual completamente personalizado para a janela de chat do n8n.
+ * - Estiliza as telas de "Boas-Vindas" e de "Agradecimento".
+ * - Controla a aparência e o posicionamento de todos os botões.
+ * - Cria o efeito de fundo com as bolhas animadas que flutuam na tela.
+ * - Garante que o layout seja responsivo e se adapte bem a telas de celular.
+ *
+ * Cada seção abaixo é responsável por uma parte da experiência visual do usuário.
+ * ===================================================================================
+ */
+
+/* --- SEÇÃO 1: FUNDAÇÃO (FONTES E CORES GLOBAIS) --- */
+
+/* Importa a fonte 'Nunito' do Google para ser usada nos textos do site. */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap');
+
+/* :root é onde definimos nossas "variáveis", como uma paleta de cores.
+   Isso nos permite reutilizar a mesma cor em vários lugares, facilitando a manutenção. */
+:root {
+    /* Apelidos para as cores principais da marca Unilavras. */
+    --unilavras-cyan: #009DE0;
+    --unilavras-dark-blue: #021D34;
+    --unilavras-text: #FFFFFF;
+    --danger-red: #E74C3C; /* Cor para o botão de "Encerrar". */
+}
+
+
+/* --- SEÇÃO 2: TEMA PERSONALIZADO PARA O CHAT DO N8N --- */
+
+/* Este é o coração da customização do chat.
+   Aqui, nós "sobrescrevemos" o visual padrão da ferramenta de chat do n8n
+   usando as variáveis que a própria ferramenta nos permite customizar. */
+#n8n-chat-container {
+    /* Define o tamanho e a posição do contêiner do chat. */
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0; /* Atalho para top: 0; right: 0; bottom: 0; left: 0; */
+    z-index: 990; /* Define a "camada". Um número menor que o do botão "Encerrar" (1000). */
+
+    /* --- 🎨 Início do Tema Customizado --- */
+    /* Cada linha '--chat--...' muda um aspecto específico da janela de chat. */
+    
+    /* Cores gerais do chat. */
+    --chat--color-primary: var(--unilavras-cyan);
+    --chat--color-secondary: var(--unilavras-dark-blue);
+    --chat--color-white: #ffffff;
+    --chat--color-light: #f8f9fa; /* Um cinza bem claro para o fundo da conversa. */
+    --chat--color-dark: #212529; /* Um cinza escuro para os textos do bot. */
+
+    /* Formato e espaçamento. */
+    --chat--spacing: 1.1rem; /* Define o espaçamento padrão dentro do chat. */
+    --chat--border-radius: 24px; /* Deixa as "bolhas" de mensagem bem arredondadas. */
+    
+    /* Estilos do cabeçalho do chat. */
+    --chat--header--background: var(--unilavras-dark-blue);
+    --chat--header--color: var(--unilavras-text);
+    --chat--header--padding: 1.2rem;
+    --chat--header--border-bottom: 1px solid var(--unilavras-cyan);
+    
+    /* Estilos do corpo da conversa. */
+    --chat--body--background: var(--chat--color-light);
+
+    /* Estilos das mensagens. */
+    --chat--message--font-size: 1rem;
+    --chat--message-line-height: 1.6;
+    --chat--message--bot--background: var(--chat--color-white); /* Fundo da bolha do bot. */
+    --chat--message--bot--color: var(--chat--color-dark);       /* Cor do texto do bot. */
+    --chat--message--user--background: var(--unilavras-cyan); /* Fundo da bolha do usuário. */
+    --chat--message--user--color: var(--unilavras-text);    /* Cor do texto do usuário. */
+    
+    /* Estilos da área de digitação (rodapé). */
+    --chat--textarea--height: 55px;
+    --chat--footer--background: var(--chat--color-white);
+    --chat--footer--border-top: 1px solid #e9ecef;
+}
+
+
+/* --- SEÇÃO 3: ESTILOS GERAIS DA PÁGINA --- */
+
+/* Regras que afetam a página inteira como um todo. */
+body {
+    /* Define a família de fontes a ser usada. */
+    font-family: 'Nunito', sans-serif;
+    /* Define a cor do fundo. */
+    background-color: var(--unilavras-dark-blue);
+    /* Define a cor padrão para os textos. */
+    color: var(--unilavras-text);
+    /* Remove a margem padrão dos navegadores. */
+    margin: 0;
+    /* Remove o espaçamento interno padrão. */
+    padding: 0;
+    /* Melhora o cálculo do tamanho dos elementos. */
+    box-sizing: border-box;
+    /* Permite a rolagem vertical se o conteúdo for maior que a tela. */
+    overflow: auto;
+}
+
+
+/* --- SEÇÃO 4: ESTILOS DAS TELAS (BOAS-VINDAS E AGRADECIMENTO) --- */
+
+/* Estiliza a primeira tela que o usuário vê. */
+.welcome-container {
+    /* Usa Flexbox para centralizar o conteúdo perfeitamente na vertical e horizontal. */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    /* Faz a tela ocupar todo o espaço visível. */
+    position: fixed;
+    inset: 0;
+    padding: 20px;
+    box-sizing: border-box;
+    /* Define a camada para ficar na frente de tudo no início. */
+    z-index: 10;
+    background-color: var(--unilavras-dark-blue);
+    /* Animação suave de surgimento/desaparecimento. */
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+/* Quando a classe 'hidden' é adicionada pelo JavaScript, a tela de boas-vindas desaparece suavemente. */
+.welcome-container.hidden {
+    opacity: 0; /* Fica transparente. */
+    transform: scale(0.95); /* Encolhe um pouco. */
+    pointer-events: none; /* Não pode mais ser clicada. */
+}
+
+/* Estilo do logo do Unilavras. */
+.unilavras-logo {
+    max-width: 300px;
+    margin-bottom: 20px;
+}
+
+/* Estilo do título principal na tela de boas-vindas. */
+.welcome-container h1 {
+    color: var(--unilavras-cyan);
+    font-size: 3.5em;
+    font-weight: 800;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra para dar profundidade. */
+    margin: 0 0 10px;
+}
+
+/* Estilo do parágrafo de texto na tela de boas-vindas. */
+.welcome-container p {
+    font-size: 1.2em;
+    line-height: 1.6; /* Espaçamento entre as linhas do texto. */
+    opacity: 0.9; /* Deixa o texto um pouco transparente. */
+    margin-bottom: 40px;
+    max-width: 500px;
+}
+
+/* Estilo do botão "Iniciar Aventura". */
+.start-chat-button {
+    background-color: var(--unilavras-cyan);
+    color: var(--unilavras-text);
+    border: none;
+    border-radius: 50px; /* Cantos bem arredondados. */
+    padding: 15px 40px;
+    font-size: 1.5em;
+    font-weight: 700;
+    cursor: pointer; /* Cursor de "mãozinha". */
+    text-transform: uppercase; /* Deixa o texto todo em maiúsculas. */
+    letter-spacing: 1px; /* Aumenta o espaço entre as letras. */
+    box-shadow: 0 5px 15px rgba(0, 157, 224, 0.4); /* Sombra azulada para dar destaque. */
+    transition: all 0.3s ease;
+}
+
+/* Efeito visual quando o mouse passa por cima do botão de início. */
+.start-chat-button:hover {
+    transform: translateY(-5px); /* Move o botão um pouco para cima. */
+    box-shadow: 0 8px 25px rgba(0, 157, 224, 0.6); /* Aumenta a sombra. */
+}
+
+/* Estiliza o "invólucro" que contém o chat e o botão de encerrar. */
+#chat-wrapper {
+    position: fixed;
+    inset: 0;
+    z-index: 5;
+}
+
+/* Estiliza o botão vermelho "Encerrar" que fica flutuando. */
+.end-session-button {
+    position: absolute; /* Permite posicioná-lo livremente dentro do 'chat-wrapper'. */
+    top: 20px;
+    right: 20px;
+    z-index: 1000; /* Camada alta para garantir que ele fique POR CIMA do chat. */
+    background-color: var(--danger-red);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-size: 1em;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    opacity: 0; /* Começa invisível. */
+    pointer-events: none; /* Não pode ser clicado enquanto invisível. */
+    transform: translateY(-20px); /* Começa um pouco para cima. */
+}
+
+/* Quando o JavaScript adiciona a classe 'visible', o botão de encerrar aparece. */
+.end-session-button.visible {
+    opacity: 1; /* Torna-se visível. */
+    pointer-events: auto; /* Pode ser clicado. */
+    transform: translateY(0); /* Desliza para sua posição final. */
+}
+.end-session-button:hover {
+    transform: scale(1.05); /* Efeito de zoom ao passar o mouse. */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+.end-session-button i {
+    margin-right: 8px; /* Espaço entre o ícone 'X' e o texto 'Encerrar'. */
+}
+
+/* Estiliza a tela final de agradecimento. */
+.thank-you-container {
+    position: fixed;
+    inset: 0;
+    overflow-y: auto; /* Permite rolar a tela se o conteúdo for grande. */
+    padding: 3rem 1rem;
+    box-sizing: border-box;
+    background-color: var(--unilavras-dark-blue);
+    z-index: 20; /* Camada alta para cobrir o chat. */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Alinha o conteúdo no topo para permitir rolagem. */
+}
+/* Estiliza o "cartão" central onde o conteúdo de agradecimento fica. */
+.thank-you-content {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(0, 157, 224, 0.1)); /* Fundo gradiente sutil. */
+    border: 1px solid rgba(255, 255, 255, 0.15); /* Borda semitransparente. */
+    border-radius: 24px;
+    padding: clamp(2rem, 5vw, 3.5rem); /* Espaçamento interno que se adapta ao tamanho da tela. */
+    max-width: 700px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    animation: fadeInUp 0.8s ease-out both; /* Aplica a animação de 'surgir de baixo'. */
+}
+
+/* Estiliza a caixa de texto em destaque que chama para a ação (conhecer o curso). */
+.call-to-action {
+    font-size: 1.1em;
+    background-color: rgba(0, 157, 224, 0.12);
+    padding: 1.2rem;
+    border-left: 6px solid var(--unilavras-cyan); /* Uma barra lateral azul para destaque. */
+    border-radius: 16px;
+    font-weight: 700;
+    margin-top: 1.5rem;
+    margin-bottom: 2.5rem;
+    color: #fff;
+    line-height: 1.6;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Estiliza a grade que mostra as tecnologias usadas. */
+.tech-grid {
+    display: grid;
+    /* Cria colunas que se ajustam automaticamente ao tamanho da tela. */
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem; /* Espaço entre os cartões de tecnologia. */
+    margin-top: 1.5rem;
+    width: 100%;
+}
+/* Estiliza cada pequeno cartão de tecnologia. */
+.tech-card {
+    background-color: rgba(255, 255, 255, 0.08);
+    padding: 1rem;
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--unilavras-text);
+    transition: all 0.2s ease;
+    box-shadow: inset 0 0 10px rgba(0, 157, 224, 0.05); /* Sombra interna sutil. */
+}
+.tech-card i {
+    font-size: 2em;
+    color: var(--unilavras-cyan);
+    margin-bottom: 0.5rem;
+}
+.tech-card span {
+    font-size: 0.95em;
+    font-weight: 600;
+}
+.tech-card:hover {
+    background-color: rgba(0, 157, 224, 0.2);
+    transform: translateY(-4px); /* Efeito de "saltar" ao passar o mouse. */
+}
+
+
+/* --- SEÇÃO 5: AJUSTES FINAIS E ANIMAÇÕES --- */
+
+/* Pequenos retoques no chat do n8n que as variáveis não cobrem. */
+#n8n-chat-widget {
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    font-family: 'Nunito', sans-serif !important; /* Força o uso da nossa fonte customizada. */
+}
+/* Ajusta os cantos das bolhas de mensagem para um efeito mais estilizado. */
+.n8n-chat-message-bubble {
+    border-bottom-right-radius: 4px !important;
+}
+.n8n-chat-message--user .n8n-chat-message-bubble {
+    border-bottom-right-radius: 4px !important;
+    border-bottom-left-radius: var(--chat--border-radius) !important;
+}
+.n8n-chat-message--bot .n8n-chat-message-bubble {
+    border-bottom-left-radius: 4px !important;
+    border-bottom-right-radius: var(--chat--border-radius) !important;
+}
+
+/* Classe de utilidade geral: qualquer elemento com a classe 'hidden' será escondido. */
+.hidden {
+    display: none !important;
+}
+
+/* Estilos para as bolhas animadas no fundo da tela. */
+.background-shapes {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    z-index: -1; /* Garante que fiquem atrás de todo o conteúdo. */
+    overflow: hidden;
+}
+.background-shapes li {
+    position: absolute; display: block; list-style: none;
+    bottom: -150px; /* Começam fora da tela. */
+    background: rgba(0, 157, 224, 0.15);
+    animation: float-up 25s linear infinite; /* Aplica a animação de flutuar. */
+}
+/* Define tamanhos e atrasos diferentes para cada bolha, criando um efeito aleatório. */
+.background-shapes li:nth-child(1){left:25%;width:80px;height:80px;animation-delay:0s}
+.background-shapes li:nth-child(2){left:10%;width:20px;height:20px;animation-delay:2s;animation-duration:12s}
+.background-shapes li:nth-child(3){left:70%;width:20px;height:20px;animation-delay:4s}
+.background-shapes li:nth-child(4){left:40%;width:60px;height:60px;animation-delay:0s;animation-duration:18s}
+.background-shapes li:nth-child(5){left:65%;width:20px;height:20px;animation-delay:0s}
+.background-shapes li:nth-child(6){left:75%;width:110px;height:110px;animation-delay:3s}
+.background-shapes li:nth-child(7){left:35%;width:150px;height:150px;animation-delay:7s}
+.background-shapes li:nth-child(8){left:50%;width:25px;height:25px;animation-delay:15s;animation-duration:45s}
+.background-shapes li:nth-child(9){left:20%;width:15px;height:15px;animation-delay:2s;animation-duration:35s}
+.background-shapes li:nth-child(10){left:85%;width:150px;height:150px;animation-delay:0s;animation-duration:11s}
+
+/* A "receita" da animação das bolhas: como elas devem se mover, girar e desaparecer. */
+@keyframes float-up {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; border-radius: 0; }
+    100% { transform: translateY(-120vh) rotate(720deg); opacity: 0; border-radius: 50%; }
+}
+
+/* A "receita" da animação para o conteúdo da tela de agradecimento surgir de baixo. */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
