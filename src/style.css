@@ -401,32 +401,3 @@ body {
     transform: translateY(0);
   }
 }
-
-/* Estiliza a seção onde ficam os cards de tecnologia, com centralização e controle de largura. */
-.tech-section {
-    width: 100%; /* Ocupa toda a largura disponível do contêiner pai. */
-    display: flex; /* Flexbox para controle interno. */
-    flex-direction: column; /* Empilha o título e a grade verticalmente. */
-    align-items: center; /* Centraliza os itens dentro da seção. */
-    padding: 0 1rem; /* Espaçamento lateral para evitar que fique colado nas bordas. */
-    margin-top: 2rem; /* Espaço entre o bloco anterior e os cards. */
-}
-
-/*
- * Estiliza a grade que contém os cards de tecnologia.
- * Define um limite de largura e centraliza a grade na tela.
- */
-.tech-grid {
-    max-width: 600px; /* Limita a largura máxima da grade para melhor visual em telas grandes. */
-    margin: 0 auto; /* Centraliza horizontalmente a grade dentro do contêiner pai. */
-    justify-content: center; /* Garante que as colunas fiquem centralizadas, útil em grades com poucas colunas. */
-}
-
-/*
- * Garante que o conteúdo de agradecimento ocupe toda a largura disponível
- * e que o cálculo de tamanhos leve em conta paddings e bordas corretamente.
- */
-.thank-you-content {
-    width: 100%; /* Ocupa toda a largura do contêiner pai. */
-    box-sizing: border-box; /* Inclui padding e borda no cálculo total da largura. */
-}
