@@ -63,7 +63,9 @@
     /* Estilos do cabeçalho do chat. */
     --chat--header--background: var(--unilavras-dark-blue);
     --chat--header--color: var(--unilavras-text);
-    --chat--header--padding: 1.2rem;
+    --chat--header--font-size: 0.95rem;
+    --chat--header--line-height: 1.2;
+    --chat--header--padding: 0.6rem 1rem;
     --chat--header--border-bottom: 1px solid var(--unilavras-cyan);
     
     /* Estilos do corpo da conversa. */
@@ -386,4 +388,35 @@ body {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* 
+ * Estiliza a seção que contém o título e os cards de tecnologia.
+ * Garante que todo o conteúdo fique centralizado e com espaçamento lateral.
+ */
+.tech-section {
+    width: 100%; /* Faz a seção ocupar toda a largura disponível. */
+    display: flex; /* Usa Flexbox para controlar o layout interno. */
+    flex-direction: column; /* Os elementos filhos (título e grade) ficam empilhados verticalmente. */
+    align-items: center; /* Centraliza horizontalmente os itens dentro da seção. */
+    padding: 0 1rem; /* Adiciona espaçamento de 1rem (16px) à esquerda e à direita. */
+}
+
+/*
+ * Estiliza a grade que contém os cards de tecnologia.
+ * Define um limite de largura e centraliza a grade na tela.
+ */
+.tech-grid {
+    max-width: 600px; /* Limita a largura máxima da grade para melhor visual em telas grandes. */
+    margin: 0 auto; /* Centraliza horizontalmente a grade dentro do contêiner pai. */
+    justify-content: center; /* Garante que as colunas fiquem centralizadas, útil em grades com poucas colunas. */
+}
+
+/*
+ * Garante que o conteúdo de agradecimento ocupe toda a largura disponível
+ * e que o cálculo de tamanhos leve em conta paddings e bordas corretamente.
+ */
+.thank-you-content {
+    width: 100%; /* Ocupa toda a largura do contêiner pai. */
+    box-sizing: border-box; /* Inclui padding e borda no cálculo total da largura. */
 }
