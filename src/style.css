@@ -231,24 +231,30 @@ body {
     position: fixed;
     inset: 0;
     overflow-y: auto; /* Permite rolar a tela se o conteúdo for grande. */
-    padding: 3rem 1rem;
-    box-sizing: border-box;
-    background-color: var(--unilavras-dark-blue);
+    background-color: var(--unilavras-dark-blue); /* Cor de fundo escura institucional. */
     z-index: 20; /* Camada alta para cobrir o chat. */
     display: flex;
-    justify-content: center;
-    align-items: flex-start; /* Alinha o conteúdo no topo para permitir rolagem. */
+    justify-content: center; /* Centraliza horizontalmente o conteúdo da tela. */
+    align-items: flex-start; /* Alinha o conteúdo no topo, permitindo rolagem para conteúdos altos. */
+    padding: 2rem 1rem; /* Espaçamento interno com margem lateral para telas pequenas. */
+    box-sizing: border-box; /* Garante que padding seja considerado no cálculo da largura. */
 }
+
 /* Estiliza o "cartão" central onde o conteúdo de agradecimento fica. */
 .thank-you-content {
-    background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(0, 157, 224, 0.1)); /* Fundo gradiente sutil. */
-    border: 1px solid rgba(255, 255, 255, 0.15); /* Borda semitransparente. */
-    border-radius: 24px;
-    padding: clamp(2rem, 5vw, 3.5rem); /* Espaçamento interno que se adapta ao tamanho da tela. */
-    max-width: 700px;
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
-    text-align: center;
-    animation: fadeInUp 0.8s ease-out both; /* Aplica a animação de 'surgir de baixo'. */
+    width: 100%; /* Ocupa toda a largura disponível no contêiner pai. */
+    max-width: 700px; /* Limita a largura máxima para boa leitura em telas largas. */
+    padding: clamp(1.5rem, 5vw, 3rem); /* Padding responsivo adaptado à tela. */
+    box-sizing: border-box; /* Garante que a largura inclua padding e bordas. */
+    
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(0, 157, 224, 0.1)); /* Fundo com leve gradiente. */
+    border: 1px solid rgba(255, 255, 255, 0.15); /* Borda semitransparente elegante. */
+    border-radius: 24px; /* Cantos arredondados para visual moderno. */
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3); /* Sombra para destacar o card do fundo. */
+    
+    text-align: center; /* Centraliza o texto. */
+    animation: fadeInUp 0.8s ease-out both; /* Animação suave de entrada. */
+    overflow-wrap: break-word; /* Quebra textos longos para evitar estouro de layout. */
 }
 
 /* Estiliza a caixa de texto em destaque que chama para a ação (conhecer o curso). */
@@ -266,20 +272,21 @@ body {
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
-/* Estiliza a grade que mostra as tecnologias usadas. */
+/* Estiliza a grade com os cartões de tecnologia. */
 .tech-grid {
-    display: grid;
-    /* Cria colunas que se ajustam automaticamente ao tamanho da tela. */
-    grid-template-columns: repeat(auto-fit, minmax(100px, 140px));
-    justify-content: center;
-    gap: 1rem; /* Espaço entre os cartões de tecnologia. */
+    display: grid; /* Usa layout em grade. */
+    grid-template-columns: repeat(auto-fit, minmax(100px, 140px)); /* Colunas adaptativas entre 100px e 140px. */
+    justify-content: center; /* Centraliza a grade dentro da seção. */
+    gap: 1rem; /* Espaçamento entre os cartões. */
+    max-width: 600px; /* Limita a largura da grade. */
+    width: 100%; /* Permite que ocupe a largura do container até esse limite. */
     margin-top: 1.5rem;
-    width: 100%;
 }
-/* Estiliza cada pequeno cartão de tecnologia. */
+
+/* Estilo de cada card individual. */
 .tech-card {
-    background-color: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(0, 157, 224, 0.25);
+    background-color: rgba(255, 255, 255, 0.08); /* Fundo translúcido claro. */
+    border: 1px solid rgba(0, 157, 224, 0.25); /* Borda azul suave. */
     padding: 1rem;
     border-radius: 14px;
     display: flex;
@@ -289,22 +296,29 @@ body {
     transition: all 0.2s ease;
     box-shadow: inset 0 0 10px rgba(0, 157, 224, 0.05); /* Sombra interna sutil. */
 }
+
 .tech-card i {
-    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-size: clamp(1.5rem, 4vw, 2rem); /* Ícone com tamanho responsivo. */
     color: var(--unilavras-cyan);
     margin-bottom: 0.5rem;
 }
+
 .tech-card span {
-    font-size: clamp(0.85rem, 2.5vw, 1rem);
+    font-size: clamp(0.85rem, 2.5vw, 1rem); /* Texto responsivo. */
     text-align: center;
 }
 
 .tech-card:hover {
-    background-color: rgba(0, 157, 224, 0.2);
+    background-color: rgba(0, 157, 224, 0.2); /* Realce suave no hover. */
     transform: translateY(-4px); /* Efeito de "saltar" ao passar o mouse. */
 }
 
+/* Ajustes específicos para telas pequenas */
 @media (max-width: 480px) {
+    .thank-you-content {
+        padding: 1.25rem; /* Padding menor para telas pequenas. */
+    }
+
     .tech-card {
         padding: 0.75rem;
     }
@@ -316,10 +330,6 @@ body {
     .call-to-action {
         font-size: 1rem;
         padding: 1rem;
-    }
-
-    .thank-you-content {
-        padding: 1.5rem;
     }
 }
 
@@ -392,16 +402,14 @@ body {
   }
 }
 
-/* 
- * Estiliza a seção que contém o título e os cards de tecnologia.
- * Garante que todo o conteúdo fique centralizado e com espaçamento lateral.
- */
+/* Estiliza a seção onde ficam os cards de tecnologia, com centralização e controle de largura. */
 .tech-section {
-    width: 100%; /* Faz a seção ocupar toda a largura disponível. */
-    display: flex; /* Usa Flexbox para controlar o layout interno. */
-    flex-direction: column; /* Os elementos filhos (título e grade) ficam empilhados verticalmente. */
-    align-items: center; /* Centraliza horizontalmente os itens dentro da seção. */
-    padding: 0 1rem; /* Adiciona espaçamento de 1rem (16px) à esquerda e à direita. */
+    width: 100%; /* Ocupa toda a largura disponível do contêiner pai. */
+    display: flex; /* Flexbox para controle interno. */
+    flex-direction: column; /* Empilha o título e a grade verticalmente. */
+    align-items: center; /* Centraliza os itens dentro da seção. */
+    padding: 0 1rem; /* Espaçamento lateral para evitar que fique colado nas bordas. */
+    margin-top: 2rem; /* Espaço entre o bloco anterior e os cards. */
 }
 
 /*
