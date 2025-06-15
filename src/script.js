@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 i18n: {                              // Permite traduzir e personalizar os textos da interface do chat.
                     en: {
                         title: 'PokédexBot Unilavras',
-                        subtitle: "✨Fale com nossa IA e capture um Pokémon!✨",
+                        subtitle: "✨Fale com a IA e capture um Pokémon!✨",
                         inputPlaceholder: '💬 Bora conversar! 💬',
                     },
                 },
