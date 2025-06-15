@@ -8,7 +8,7 @@
  * O que este código faz?
  * - Define a paleta de cores oficial e a fonte usada em todo o app.
  * - Cria um tema visual completamente personalizado para a janela de chat do n8n.
- * - Estiliza as telas de "Boas-Vindas" e de "Agradecimento".
+ * - Estiliza as telas de "Boas-Vindas" и de "Agradecimento".
  * - Controla a aparência e o posicionamento de todos os botões.
  * - Cria o efeito de fundo com as bolhas animadas que flutuam na tela.
  * - Garante que o layout seja responsivo e se adapte bem a telas de celular.
@@ -272,78 +272,60 @@ body {
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
-/* --- [INÍCIO DA ATUALIZAÇÃO COM FLEXBOX] --- */
-/* Estiliza a grade com os cartões de tecnologia para criar um layout de matriz. */
-.tech-grid {
-    display: flex; /* USA FLEXBOX PARA ALINHAR OS ITENS */
-    flex-wrap: wrap; /* PERMITE QUE OS ITENS QUEBREM PARA A PRÓXIMA LINHA */
-    justify-content: center; /* CENTRALIZA OS ITENS NA HORIZONTAL */
-    gap: 1.5rem; /* Espaçamento entre os cartões. */
-    width: 100%; /* Ocupa a largura total do seu contêiner pai. */
-    max-width: 700px; /* Define uma largura máxima para a grade. */
-    margin: 2rem auto 0; /* Centraliza a grade na tela (auto nas laterais). */
+/* --- SEÇÃO DE TECNOLOGIAS REFORMULADA --- */
+
+/* Estilo para a seção que envolve o título e as pílulas. */
+.tech-section {
+    margin-top: 2.5rem; /* Aumenta o espaço acima da seção. */
+    width: 100%;
 }
 
-/* Estilo de cada card individual. */
-.tech-card {
-    /* Define como o item se comporta no flex container:
-       flex-grow: 1 (pode crescer)
-       flex-shrink: 1 (pode encolher)
-       flex-basis: 120px (tamanho base inicial) */
-    flex: 1 1 120px;
-    max-width: 150px; /* Limita o tamanho máximo para não esticar demais. */
-
-    background-color: rgba(255, 255, 255, 0.08); /* Fundo translúcido claro. */
-    border: 1px solid rgba(0, 157, 224, 0.25); /* Borda azul suave. */
-    padding: 1rem;
-    border-radius: 14px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; /* Garante que o conteúdo dentro do card fique bem alinhado. */
+.tech-section h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
     color: var(--unilavras-text);
-    transition: all 0.2s ease;
-    box-shadow: inset 0 0 10px rgba(0, 157, 224, 0.05); /* Sombra interna sutil. */
-    aspect-ratio: 1 / 1; /* Força o card a ser um quadrado perfeito. Opcional. */
-}
-/* --- [FIM DA ATUALIZAÇÃO] --- */
-
-.tech-card i {
-    font-size: clamp(1.5rem, 4vw, 2rem); /* Ícone com tamanho responsivo. */
-    color: var(--unilavras-cyan);
-    margin-bottom: 0.5rem;
+    opacity: 0.8;
+    margin-bottom: 1.5rem; /* Espaço entre o título e as pílulas. */
 }
 
-.tech-card span {
-    font-size: clamp(0.85rem, 2.5vw, 1rem); /* Texto responsivo. */
-    text-align: center;
+/* Contêiner que alinha as pílulas/tags. */
+.tech-pills-container {
+    display: flex; /* Alinha as pílulas em linha. */
+    flex-wrap: wrap; /* Permite que quebrem para a próxima linha em telas menores. */
+    justify-content: center; /* Centraliza as pílulas. */
+    gap: 0.75rem 1rem; /* Espaçamento vertical e horizontal entre as pílulas. */
 }
 
-.tech-card:hover {
-    background-color: rgba(0, 157, 224, 0.2); /* Realce suave no hover. */
-    transform: translateY(-4px); /* Efeito de "saltar" ao passar o mouse. */
+/* Estilo individual de cada pílula de tecnologia. */
+.tech-pill {
+    display: inline-flex; /* Faz com que o ícone e o texto fiquem na mesma linha. */
+    align-items: center; /* Alinha o ícone e o texto verticalmente. */
+    background-color: rgba(0, 157, 224, 0.1); /* Fundo azul-ciano translúcido. */
+    color: var(--unilavras-text);
+    padding: 0.6rem 1.2rem; /* Espaçamento interno. */
+    border-radius: 50px; /* Deixa com formato de pílula. */
+    border: 1px solid rgba(0, 157, 224, 0.3); /* Borda sutil. */
+    font-size: 0.95rem;
+    font-weight: 700;
+    transition: all 0.3s ease; /* Animação suave para o hover. */
+    cursor: default; /* Mantém o cursor padrão. */
 }
 
-/* Ajustes específicos para telas pequenas */
-@media (max-width: 480px) {
-    .thank-you-content {
-        padding: 1.25rem; /* Padding menor para telas pequenas. */
-    }
-
-    .tech-card {
-        padding: 0.75rem;
-        flex-basis: 100px; /* Reduz o tamanho base em telas menores */
-    }
-
-    .tech-grid {
-        gap: 0.75rem;
-    }
-
-    .call-to-action {
-        font-size: 1rem;
-        padding: 1rem;
-    }
+/* Efeito ao passar o mouse sobre a pílula. */
+.tech-pill:hover {
+    background-color: rgba(0, 157, 224, 0.25); /* Fica um pouco mais claro. */
+    border-color: rgba(0, 157, 224, 0.6);
+    transform: translateY(-3px); /* Efeito de "saltar" levemente. */
+    box-shadow: 0 4px 15px rgba(0, 157, 224, 0.2);
 }
+
+/* Estilo para o ícone dentro da pílula. */
+.tech-pill i {
+    color: var(--unilavras-cyan); /* Cor do ícone. */
+    font-size: 1.1em;
+    margin-right: 0.6rem; /* Espaço entre o ícone e o texto. */
+}
+
 
 /* --- SEÇÃO 5: AJUSTES FINAIS E ANIMAÇÕES --- */
 
