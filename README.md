@@ -58,8 +58,13 @@ A interface do chat é um projeto estático (frontend). Para executá-la localme
 
 ---
 
+---
+
 ## 🎓 Um Projeto do Curso de ADS
 
-Este projeto foi concebido e desenvolvido como uma vitrine do curso de **Análise e Desenvolvimento de Sistemas do Unilavras**. Ele reflete o nosso compromisso em aliar teoria e prática, criando soluções tecnológicas criativas e funcionais.
+Este projeto, o **Pokedex-Praca-Chat**, é a porta de entrada e o coração da interação da experiência criada para o evento **Unilavras na Praça 2025**. Ele opera em total sinergia com o **Telão Interativo**, formando uma aplicação *full-stack* dinâmica e envolvente.
+
+Enquanto o telão oferece o grande espetáculo visual, este chatbot é o cérebro da comunicação, permitindo que qualquer participante, usando seu próprio celular, possa **"capturar" Pokémon em tempo real** e ver seu nome brilhar no evento.
+
 
 **Venha para o ADS e transforme suas ideias em realidade!**
