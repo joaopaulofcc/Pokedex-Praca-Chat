@@ -74,7 +74,7 @@
     --chat--body--background: var(--chat--color-light);
 
     /* Estilos das mensagens. */
-    --chat--message--font-size: 1rem;
+    --chat--message--font-size: 0.9rem;
     --chat--message-line-height: 1.6;
     --chat--message--bot--background: var(--chat--color-white); /* Fundo da bolha do bot. */
     --chat--message--bot--color: var(--chat--color-dark);       /* Cor do texto do bot. */
