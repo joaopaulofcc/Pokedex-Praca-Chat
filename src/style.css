@@ -104,8 +104,8 @@ body {
     padding: 0;
     /* Melhora o cálculo do tamanho dos elementos. */
     box-sizing: border-box;
-    /* Não permite a rolagem vertical */
-    overflow: hidden;
+    /* Permite a rolagem vertical se o conteúdo for maior que a tela. */
+    overflow: auto;
 }
 
 
@@ -272,55 +272,74 @@ body {
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
-/* Garante que a grade de tecnologias fique centralizada e flexível */
+/* --- [INÍCIO DA ATUALIZAÇÃO] --- */
+/* Estiliza a grade com os cartões de tecnologia para criar um layout de matriz. */
 .tech-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Cards ocupam o espaço necessário */
-    gap: 1rem;
-    justify-items: center; /* Centraliza os cartões dentro das colunas */
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 0 1rem;
-    box-sizing: border-box;
+    display: grid; /* Mantém o layout em grade, que é ideal para uma matriz. */
+    
+    /* A linha abaixo é a chave: cria colunas que se ajustam ao espaço.
+       - 'auto-fit': cria quantas colunas couberem na largura disponível.
+       - 'minmax(120px, 1fr)': cada coluna terá no mínimo 120px, mas pode crescer
+         para preencher o espaço extra igualmente (1fr = 1 fração do espaço). */
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    
+    gap: 1.5rem; /* Espaçamento entre os cartões. */
+    width: 100%; /* Ocupa a largura total do seu contêiner pai. */
+    max-width: 700px; /* Define uma largura máxima para a grade. */
+    margin: 2rem auto 0; /* Centraliza a grade na tela (auto nas laterais). */
 }
+/* --- [FIM DA ATUALIZAÇÃO] --- */
 
-/* Cartões de tecnologia com largura limitada para não esticarem demais */
+
+/* Estilo de cada card individual. */
 .tech-card {
-    width: 100%;
-    max-width: 140px; /* Limite para evitar que o card fique largo em telas grandes */
-    background-color: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(0, 157, 224, 0.25);
+    background-color: rgba(255, 255, 255, 0.08); /* Fundo translúcido claro. */
+    border: 1px solid rgba(0, 157, 224, 0.25); /* Borda azul suave. */
     padding: 1rem;
     border-radius: 14px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center; /* Garante que o conteúdo dentro do card fique bem alinhado. */
     color: var(--unilavras-text);
-    text-align: center;
     transition: all 0.2s ease;
-    box-shadow: inset 0 0 10px rgba(0, 157, 224, 0.05);
+    box-shadow: inset 0 0 10px rgba(0, 157, 224, 0.05); /* Sombra interna sutil. */
+    aspect-ratio: 1 / 1; /* Força o card a ser um quadrado perfeito. Opcional. */
 }
 
-/* Ícone e texto responsivos */
 .tech-card i {
-    font-size: clamp(1.5rem, 5vw, 2rem);
+    font-size: clamp(1.5rem, 4vw, 2rem); /* Ícone com tamanho responsivo. */
     color: var(--unilavras-cyan);
     margin-bottom: 0.5rem;
 }
+
 .tech-card span {
-    font-size: clamp(0.85rem, 2.5vw, 1rem);
-    line-height: 1.2;
+    font-size: clamp(0.85rem, 2.5vw, 1rem); /* Texto responsivo. */
+    text-align: center;
 }
 
-/* Melhora visual em telas pequenas */
+.tech-card:hover {
+    background-color: rgba(0, 157, 224, 0.2); /* Realce suave no hover. */
+    transform: translateY(-4px); /* Efeito de "saltar" ao passar o mouse. */
+}
+
+/* Ajustes específicos para telas pequenas */
 @media (max-width: 480px) {
-    .tech-grid {
-        grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
-        gap: 0.75rem;
+    .thank-you-content {
+        padding: 1.25rem; /* Padding menor para telas pequenas. */
     }
+
     .tech-card {
         padding: 0.75rem;
+    }
+
+    .tech-grid {
+        gap: 0.75rem;
+    }
+
+    .call-to-action {
+        font-size: 1rem;
+        padding: 1rem;
     }
 }
 
