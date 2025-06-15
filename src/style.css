@@ -63,8 +63,8 @@
     /* Estilos do cabeçalho do chat. */
     --chat--header--background: var(--unilavras-dark-blue);
     --chat--header--color: var(--unilavras-text);
-    --chat--header--font-size: 0.95rem;
-    --chat--header--line-height: 1.2;
+    --chat--header--font-size: 0.9rem;
+    --chat--header--line-height: 1.1;
     --chat--header--padding: 0.6rem 1rem;
     --chat--header--border-bottom: 1px solid var(--unilavras-cyan);
     
