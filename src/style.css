@@ -272,27 +272,27 @@ body {
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
-/* --- [INÍCIO DA ATUALIZAÇÃO] --- */
+/* --- [INÍCIO DA ATUALIZAÇÃO COM FLEXBOX] --- */
 /* Estiliza a grade com os cartões de tecnologia para criar um layout de matriz. */
 .tech-grid {
-    display: grid; /* Mantém o layout em grade, que é ideal para uma matriz. */
-    
-    /* A linha abaixo é a chave: cria colunas que se ajustam ao espaço.
-       - 'auto-fit': cria quantas colunas couberem na largura disponível.
-       - 'minmax(120px, 1fr)': cada coluna terá no mínimo 120px, mas pode crescer
-         para preencher o espaço extra igualmente (1fr = 1 fração do espaço). */
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    
+    display: flex; /* USA FLEXBOX PARA ALINHAR OS ITENS */
+    flex-wrap: wrap; /* PERMITE QUE OS ITENS QUEBREM PARA A PRÓXIMA LINHA */
+    justify-content: center; /* CENTRALIZA OS ITENS NA HORIZONTAL */
     gap: 1.5rem; /* Espaçamento entre os cartões. */
     width: 100%; /* Ocupa a largura total do seu contêiner pai. */
     max-width: 700px; /* Define uma largura máxima para a grade. */
     margin: 2rem auto 0; /* Centraliza a grade na tela (auto nas laterais). */
 }
-/* --- [FIM DA ATUALIZAÇÃO] --- */
-
 
 /* Estilo de cada card individual. */
 .tech-card {
+    /* Define como o item se comporta no flex container:
+       flex-grow: 1 (pode crescer)
+       flex-shrink: 1 (pode encolher)
+       flex-basis: 120px (tamanho base inicial) */
+    flex: 1 1 120px;
+    max-width: 150px; /* Limita o tamanho máximo para não esticar demais. */
+
     background-color: rgba(255, 255, 255, 0.08); /* Fundo translúcido claro. */
     border: 1px solid rgba(0, 157, 224, 0.25); /* Borda azul suave. */
     padding: 1rem;
@@ -306,6 +306,7 @@ body {
     box-shadow: inset 0 0 10px rgba(0, 157, 224, 0.05); /* Sombra interna sutil. */
     aspect-ratio: 1 / 1; /* Força o card a ser um quadrado perfeito. Opcional. */
 }
+/* --- [FIM DA ATUALIZAÇÃO] --- */
 
 .tech-card i {
     font-size: clamp(1.5rem, 4vw, 2rem); /* Ícone com tamanho responsivo. */
@@ -331,6 +332,7 @@ body {
 
     .tech-card {
         padding: 0.75rem;
+        flex-basis: 100px; /* Reduz o tamanho base em telas menores */
     }
 
     .tech-grid {
