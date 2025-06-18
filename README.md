@@ -111,4 +111,4 @@ Este projeto, o **Pokedex-Praca-Chat**, é a porta de entrada e o coração da i
 
 Enquanto o telão oferece o grande espetáculo visual, este chatbot é o cérebro da comunicação, permitindo que qualquer participante, usando seu próprio celular, possa **"capturar" Pokémon em tempo real** e ver seu nome brilhar no evento.
 
-> **Venha para o ADS e transforme suas ideias em realidade!**
+> **Venha fazer ADS e transforme suas ideias em realidade!**
